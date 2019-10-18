@@ -5,21 +5,24 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var UserSchema = new Schema({
+var MealPlanSchema = new Schema({
   // `name` must be unique and of type String
-  firstName: {
-    type: "String"
+  ingredients: {
+    type: String
   },
-  lastName: {
-    type: "String"
+  directions: {
+    type: String
   },
-  address: {
-
+  date: {
+    type: Date
+  },
+  dietOptionIds:{
+    type: Schema.Types.ObjectId
   }
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var User = mongoose.model("User", UserSchema);
+var MealPlan = mongoose.model("MealPlan", MealPlanSchema);
 
-// Export the User model
-module.exports = User;
+// Export the MealPlan model
+module.exports = MealPlan;
