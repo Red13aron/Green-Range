@@ -4,17 +4,18 @@ import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import ChoosePlanPage from "./components/ChoosePlanPage";
 import HomePage from "./components/HomePage";
-
+import LandingPage from "./components/LandingPage";
 
 function App() {
   return (
     // <Wrapper>
-      <Router>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/plans" component={ChoosePlanPage} />
-        <Route path="/signup" component={SignUpPage} />
-        <Route path="/home" component={HomePage} />
-      </Router>
+    <Router>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/plans" component={ChoosePlanPage} />
+      <Route path="/signup" component={SignUpPage} />
+      <Route path="/home" component={HomePage} />
+      <Route path="/" component={LandingPage} />
+    </Router>
     // </Wrapper>
   );
 }
