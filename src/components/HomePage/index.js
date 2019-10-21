@@ -1,15 +1,14 @@
 import React from "react";
-import NavBar from "./NavBar";
+import NavBar from "../LandingPage/NavBar";
 import Footer from "./Footer";
 import RecipeCard from "./Card";
-import Header from "../Header";
+import Header from "../LandingPage/Header";
 
 export default function HomePage() {
   return (
     <>
-      <Header />
       <NavBar />
-
+      <Header />
       <RecipeCard />
       <Footer />
     </>
