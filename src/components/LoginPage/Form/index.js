@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,7 +10,9 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+import { Redirect } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
+import API from '../../../utils/API';
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +51,24 @@ const useStyles = makeStyles(theme => ({
 export default function SignInForm() {
     const classes = useStyles();
 
+const [userId, setUserId] = useState("");
+
+    function submitHandler(event) {
+        event.preventDefault();
+
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        API.signIn({ email, password })
+            .then(function (res) {
+                setUserId(res.data)
+            }).catch(err => console.log(err));
+    }
+
+    if (userId) {
+        return <Redirect to = "/home" />
+    }
+
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -61,7 +81,9 @@ export default function SignInForm() {
                     <Typography component="h1" variant="h5">
                         Sign in
           </Typography>
-                    <form className={classes.form} noValidate>
+                    <form
+                        onSubmit={submitHandler}
+                        className={classes.form} noValidate>
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -89,7 +111,6 @@ export default function SignInForm() {
                             label="Remember me"
                         />
                         <Button
-                            href="/home"
                             type="submit"
                             fullWidth
                             variant="contained"
