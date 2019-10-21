@@ -46,6 +46,9 @@ export default function NavBar() {
           <Typography href="/login" variant="h6" className={classes.title}>
             Green Range
           </Typography>
+          <Button href="/plans" color="inherit">
+            Plans
+          </Button>
           <Button href="/login" color="inherit">
             Login
           </Button>
