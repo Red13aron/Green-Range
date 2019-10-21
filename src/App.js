@@ -5,20 +5,19 @@ import SignUpPage from "./components/SignUpPage";
 import ChoosePlanPage from "./components/ChoosePlanPage";
 import HomePage from "./components/HomePage";
 import ingredientsPage from "./components/IngredientsListPage";
-
-
+import LandingPage from "./components/LandingPage";
 
 function App() {
   return (
     // <Wrapper>
-      <Router>
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/plans" component={ChoosePlanPage} />
-        <Route exact path="/signup" component={SignUpPage} />
-        <Route exact path="/home" component={HomePage} />
-        <Route exact path="/ingredients" component={ingredientsPage} />
-
-      </Router>
+    <Router>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/plans" component={ChoosePlanPage} />
+      <Route path="/signup" component={SignUpPage} />
+      <Route path="/home" component={HomePage} />
+      <Route path="/" component={LandingPage} />
+      <Route exact path="/ingredients" component={ingredientsPage} />
+    </Router>
     // </Wrapper>
   );
 }

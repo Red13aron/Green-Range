@@ -40,7 +40,7 @@ export default function AddressForm() {
   function handleFormSubmit(event) {
     console.log("great");
     event.preventDefault();
-    console.log(firstName)
+    console.log(firstName, lastName)
     if (firstName !== "" && lastName !== "" && address !== "" && email !== "" && password !== "") {
       API.saveUser({
         firstName,
@@ -48,8 +48,10 @@ export default function AddressForm() {
         address,
         email,
         password,
-      }).then(function (res) { return res.status(200) }
+      }).then(function (res) { console.log("test 2", res);
+      return res.status(200) }
       )
+      
         .catch(err => console.log(err));
     }
   }

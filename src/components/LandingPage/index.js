@@ -1,12 +1,12 @@
 import React from "react";
 import NavBar from "./NavBar";
-import Plans from "./Plans";
+import Header from "./Header";
 
-export default function ChoosePlanPage() {
+export default function LandingPage() {
   return (
     <>
       <NavBar />
-      <Plans />
+      <Header />
     </>
   );
 }
