@@ -4,6 +4,7 @@ import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import ChoosePlanPage from "./components/ChoosePlanPage";
 import HomePage from "./components/HomePage";
+import ingredientsPage from "./components/IngredientsListPage";
 import LandingPage from "./components/LandingPage";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/signup" component={SignUpPage} />
       <Route path="/home" component={HomePage} />
       <Route path="/" component={LandingPage} />
+      <Route exact path="/ingredients" component={ingredientsPage} />
     </Router>
     // </Wrapper>
   );
