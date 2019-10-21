@@ -16,6 +16,12 @@ var UserSchema = new Schema({
   address: {
     type: String
   },
+  email: {
+    type: String
+  },
+  password: {
+    type: String
+  },
   dietOptionIds:{
     type: [Schema.Types.ObjectId]
   },

@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import API from "../../../utils/API"
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,6 +30,32 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function AddressForm() {
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleFormSubmit(event) {
+    console.log("great");
+    event.preventDefault();
+    console.log(firstName, lastName)
+    if (firstName !== "" && lastName !== "" && address !== "" && email !== "" && password !== "") {
+      API.saveUser({
+        firstName,
+        lastName,
+        address,
+        email,
+        password,
+      }).then(function (res) { console.log("test 2", res);
+      return res.status(200) }
+      )
+      
+        .catch(err => console.log(err));
+    }
+  }
+
   const classes = useStyles();
   return (
     <Container className={classes.container} >
@@ -45,6 +70,7 @@ export default function AddressForm() {
               id="firstName"
               name="firstName"
               label="First name"
+              onChange={(event) => setFirstName(event.target.value)}
               fullWidth
               autoComplete="fname"
             />
@@ -55,8 +81,31 @@ export default function AddressForm() {
               id="lastName"
               name="lastName"
               label="Last name"
+              onChange={(event) => setLastName(event.target.value)}
               fullWidth
               autoComplete="lname"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} >
+            <TextField
+              required
+              id="email"
+              name="email"
+              label="Email"
+              onChange={(event) => setEmail(event.target.value)}
+              fullWidth
+              autoComplete="email"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} >
+            <TextField
+              required
+              id="password"
+              name="password"
+              label="Password"
+              onChange={(event) => setPassword(event.target.value)}
+              fullWidth
+              autoComplete="password"
             />
           </Grid>
           <Grid item xs={12}>
@@ -64,18 +113,10 @@ export default function AddressForm() {
               required
               id="address1"
               name="address1"
-              label="Address line 1"
+              label="Address"
+              onChange={(event) => setAddress(event.target.value)}
               fullWidth
               autoComplete="billing address-line1"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id="address2"
-              name="address2"
-              label="Address line 2"
-              fullWidth
-              autoComplete="billing address-line2"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -89,7 +130,14 @@ export default function AddressForm() {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField id="state" name="state" label="State/Province/Region" fullWidth />
+            <TextField
+              required
+              id="state"
+              name="state"
+              label="State"
+              fullWidth
+              autoComplete="state"
+              />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -111,12 +159,6 @@ export default function AddressForm() {
               autoComplete="billing country"
             />
           </Grid>
-          <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-              label="Use this address for payment details"
-            />
-          </Grid>
           <Button
             href="/home"
             type="submit"
@@ -124,6 +166,7 @@ export default function AddressForm() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleFormSubmit}
           >
             Sign Up
             </Button>
