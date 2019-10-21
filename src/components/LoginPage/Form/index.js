@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -50,8 +50,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignInForm() {
     const classes = useStyles();
-
-const [userId, setUserId] = useState("");
+    const [userId, setUserId] = useState("");
 
     function submitHandler(event) {
         event.preventDefault();
@@ -66,7 +65,7 @@ const [userId, setUserId] = useState("");
     }
 
     if (userId) {
-        return <Redirect to = "/home" />
+        return <Redirect to="/home" />
     }
 
     return (
@@ -123,7 +122,7 @@ const [userId, setUserId] = useState("");
                             <Grid item xs>
                             </Grid>
                             <Grid item>
-                                <Link href="/plans" variant="body2">
+                                <Link to="/plans" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
