@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavBar from './NavBar';
 import Footer from './Footer';
 import RecipeCard from "./Card";
-import Container from '@material-ui/core/Container';
+import { Container } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 const styles = theme => ({
@@ -43,7 +43,7 @@ class HomePage extends Component {
                     without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
                     medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
                     again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                    minutes more. (Discard any mussels that don't open.)
+                    minutes more. (Discard any mussels that don’t open.)
                     Set aside off of the heat to let rest for 10 minutes, and then serve.`
             },
             {
@@ -65,7 +65,7 @@ class HomePage extends Component {
                     without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
                     medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
                     again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                    minutes more. (Discard any mussels that don't open.)
+                    minutes more. (Discard any mussels that don’t open.)
                     Set aside off of the heat to let rest for 10 minutes, and then serve.`
             },
         ];
@@ -76,8 +76,6 @@ class HomePage extends Component {
         return (
             <>
                 <NavBar />
-                {/* <CurrentRecipes /> */}
-                {userId}
                 <Container className={classes.container}>
                     {this.state.recipes.map(recipe => (
                         <RecipeCard recipe={recipe} key={recipe.id}/>
