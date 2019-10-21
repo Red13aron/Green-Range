@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavBar from './NavBar';
 import Footer from './Footer';
 import RecipeCard from "./Card";
-import {Button, Container} from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 
 const styles = theme => ({
