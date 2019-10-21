@@ -1,19 +1,16 @@
 import React from "react";
-import NavBar from './NavBar';
-import CurrentRecipes from './CurrentRecipes';
-import Footer from './Footer';
+import NavBar from "../LandingPage/NavBar";
+import Footer from "./Footer";
 import RecipeCard from "./Card";
-
-
+import Header from "../LandingPage/Header";
 
 export default function HomePage() {
-    return (
-        <>
-            <NavBar />
-            {/* <CurrentRecipes /> */}
-            <RecipeCard />
-            <Footer />
-        </>
-    )
-};
-
+  return (
+    <>
+      <NavBar />
+      <Header />
+      <RecipeCard />
+      <Footer />
+    </>
+  );
+}

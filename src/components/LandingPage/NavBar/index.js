@@ -4,9 +4,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import "./style.css";
+import imageLogo from "../images/green-range-logo12.8.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,11 +14,15 @@ const useStyles = makeStyles(theme => ({
     width: "100%"
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginCenter: theme.spacing(2)
   },
   title: {
     flexGrow: 1,
     fontSize: "30px"
+  },
+  subtitle: {
+    fontSize: "20px",
+    padding: "20px"
   },
   navBar: {
     backgroundColor: "rgb(206,219,48)"
@@ -32,19 +36,18 @@ export default function NavBar() {
     <div className={classes.root}>
       <AppBar className={classes.navBar} position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          <img src={imageLogo} alt="Logo" style={{ width: 70, height: 70 }} />
           <Typography variant="h6" className={classes.title}>
             Green Range
           </Typography>
-          <Typography href="/login" variant="h6" className={classes.title}>
-            Green Range
+          <Typography variant="h6" className={classes.subtitle}>
+            How it works
+          </Typography>
+          <Typography variant="h6" className={classes.subtitle}>
+            Meal Plans
+          </Typography>
+          <Typography variant="h6" className={classes.subtitle}>
+            About us
           </Typography>
           <Button href="/login" color="inherit">
             Login
