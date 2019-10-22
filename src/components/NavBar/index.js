@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import ButtonSignUp from "../../ButtonSignUp";
-import imageLogo from "../images/green-range-logo12.8.png";
+import ButtonSignUp from "../ButtonSignUp";
+import imageLogo from "../../img/logo/green-range-logo12.8.png";
 import "./style.css";
 import { Link } from "react-router-dom";
 
@@ -38,7 +38,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavBar(props) {
+export default function NavBar() {
+  function getPath() {
+    const currentLocation = window.location.pathname;
+    return currentLocation;
+  }
   const classes = useStyles();
 
   return (
@@ -51,7 +55,12 @@ export default function NavBar(props) {
               Green Range
             </Link>
           </Typography>
-          <Typography
+          {getPath() !== "/howitworks" && (
+            <Link className={classes.subtitle} to="/howitworks">
+              How it works
+            </Link>
+          )}
+          {/* <Typography
             href="/howitworks"
             variant="h6"
             className={classes.subtitle}
@@ -60,17 +69,29 @@ export default function NavBar(props) {
               {" "}
               How it works
             </Link>
-          </Typography>
-          <Typography variant="h6" className={classes.subtitle}>
+          </Typography> */}
+          {getPath() !== "/plans" && (
             <Link className={classes.subtitle} to="/plans">
               Meal Plans
             </Link>
-          </Typography>
-          <Typography href="/aboutus" variant="h6" className={classes.subtitle}>
+          )}
+          {/* <Typography variant="h6" className={classes.subtitle}>
+            <Link className={classes.subtitle} to="/plans">
+              Meal Plans
+            </Link>
+          </Typography> */}
+
+          {getPath() !== "/abputus" && (
             <Link className={classes.subtitle} to="/aboutus">
               About us
             </Link>
-          </Typography>
+          )}
+          {/* <Typography href="/aboutus" variant="h6" className={classes.subtitle}>
+            <Link className={classes.subtitle} to="/aboutus">
+              About us
+            </Link>
+          </Typography> */}
+
           <ButtonSignUp href="/login"></ButtonSignUp>
         </Toolbar>
       </AppBar>

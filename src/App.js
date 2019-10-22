@@ -6,11 +6,13 @@ import ChoosePlanPage from "./components/ChoosePlanPage";
 import HomePage from "./components/HomePage";
 import ingredientsPage from "./components/IngredientsListPage";
 import LandingPage from "./components/LandingPage";
-
+import NavBar from "./components/NavBar";
 function App() {
   return (
     // <Wrapper>
+
     <Router>
+      <NavBar />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/plans" component={ChoosePlanPage} />
       <Route exact path="/signup" component={SignUpPage} />
