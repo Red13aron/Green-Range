@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -48,10 +49,12 @@ export default function AddressForm() {
         address,
         email,
         password,
-      }).then(function (res) { console.log("test 2", res);
-      return res.status(200) }
+      }).then(function (res) {
+        console.log("test 2", res);
+        return res.status(200)
+      }
       )
-      
+
         .catch(err => console.log(err));
     }
   }
@@ -61,7 +64,7 @@ export default function AddressForm() {
     <Container className={classes.container} >
       <React.Fragment>
         <Typography className={classes.title} variant="h6" gutterBottom>
-          Shipping address
+          Tell us about yourself
       </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} >
@@ -137,7 +140,7 @@ export default function AddressForm() {
               label="State"
               fullWidth
               autoComplete="state"
-              />
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -160,7 +163,7 @@ export default function AddressForm() {
             />
           </Grid>
           <Button
-            href="/home"
+
             type="submit"
             fullWidth
             variant="contained"
@@ -168,8 +171,8 @@ export default function AddressForm() {
             className={classes.submit}
             onClick={handleFormSubmit}
           >
-            Sign Up
-            </Button>
+            <Link to="/home">Sign Up</Link>
+          </Button>
         </Grid>
       </React.Fragment>
     </Container>
