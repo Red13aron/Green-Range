@@ -63,11 +63,10 @@ export default function RecipeCard(props) {
                         </IconButton>
                     }
                     title={props.recipe.title}
-                    subheader={props.recipe.date}
                 />
                 <CardMedia
                     className={classes.media}
-                    image={ingredients}
+                    image={props.recipe.imgUrl}
                     title={props.recipe.imgAlt}
                 />
                 <CardContent>
