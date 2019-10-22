@@ -115,7 +115,7 @@ export default function SignInForm(props) {
                             <Grid item xs>
                             </Grid>
                             <Grid item>
-                                <Link href="/plans" variant="body2">
+                                <Link to="/plans" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
