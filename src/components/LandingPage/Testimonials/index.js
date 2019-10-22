@@ -70,6 +70,19 @@ export default function Testimonials() {
           <Paper className={classes.root}>
             <img src={imageLogo} alt="Logo" style={{ width: 30, height: 30 }} />
             <Typography variant="h6" className={classes.subtitle}>
+              "I really don't have time for shopping at groceries stores. With
+              Green Range I have fresh ingredients so quickly and I make less
+              garbage than I've imagined.”
+            </Typography>
+            <Typography component="p" className={classes.p}>
+              Peter Marshals - Fargo
+            </Typography>
+          </Paper>
+        </div>
+        <div className="comment-card">
+          <Paper className={classes.root}>
+            <img src={imageLogo} alt="Logo" style={{ width: 30, height: 30 }} />
+            <Typography variant="h6" className={classes.subtitle}>
               "My favorite thing in Green Range are the freshness of the
               ingredients and how fast is the delivery.”
             </Typography>

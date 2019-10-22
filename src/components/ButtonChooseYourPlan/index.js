@@ -23,7 +23,7 @@ export default function ButtonSingUp() {
           color="secondary"
           className={classes.margin}
         >
-          Sign In
+          Choose your plan
         </Button>
       </div>
     </div>
