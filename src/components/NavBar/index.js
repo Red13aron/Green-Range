@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+
 import ButtonSignUp from "../ButtonSignUp";
 import imageLogo from "../../img/logo/green-range-logo12.8.png";
 import "./style.css";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,10 +40,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NavBar() {
-  function getPath() {
-    const currentLocation = window.location.pathname;
-    return currentLocation;
-  }
+  // const [landing, setLanding] = useState(false);
+  // const [howItWorks, setHowItWorks] = useState(false);
+  // const [plans, setPlans] = useState(false);
+  // const [aboutUs, setAboutUs] = useState(false);
+  // const [login, setLogin] = useState(false);
+  let location = useLocation();
   const classes = useStyles();
 
   return (
@@ -55,8 +58,12 @@ export default function NavBar() {
               Green Range
             </Link>
           </Typography>
-          {getPath() !== "/howitworks" && (
-            <Link className={classes.subtitle} to="/howitworks">
+          {location.pathname !== "/howitworks" && (
+            <Link
+              // onClick={setHowItWorks(true)}
+              className={classes.subtitle}
+              to="/howitworks"
+            >
               How it works
             </Link>
           )}
@@ -70,8 +77,12 @@ export default function NavBar() {
               How it works
             </Link>
           </Typography> */}
-          {getPath() !== "/plans" && (
-            <Link className={classes.subtitle} to="/plans">
+          {location.pathname !== "/plans" && (
+            <Link
+              // onClick={setPlans(true)}
+              className={classes.subtitle}
+              to="/plans"
+            >
               Meal Plans
             </Link>
           )}
@@ -81,8 +92,12 @@ export default function NavBar() {
             </Link>
           </Typography> */}
 
-          {getPath() !== "/abputus" && (
-            <Link className={classes.subtitle} to="/aboutus">
+          {location.pathname !== "/aboutus" && (
+            <Link
+              // onClick={setAboutUs(true)}
+              className={classes.subtitle}
+              to="/aboutus"
+            >
               About us
             </Link>
           )}
@@ -91,8 +106,9 @@ export default function NavBar() {
               About us
             </Link>
           </Typography> */}
-
-          <ButtonSignUp href="/login"></ButtonSignUp>
+          {location.pathname !== "/login" && (
+            <ButtonSignUp href="/login"></ButtonSignUp>
+          )}
         </Toolbar>
       </AppBar>
     </div>

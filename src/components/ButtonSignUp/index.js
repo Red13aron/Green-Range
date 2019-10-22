@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
@@ -8,6 +9,10 @@ const useStyles = makeStyles(theme => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(1)
+  },
+  link: {
+    textDecoration: "none",
+    color: "white"
   }
 }));
 
@@ -23,7 +28,9 @@ export default function ButtonSingUp() {
           color="secondary"
           className={classes.margin}
         >
-          Sign In
+          <Link className={classes.link} to="/login">
+            Sign In
+          </Link>
         </Button>
       </div>
     </div>
