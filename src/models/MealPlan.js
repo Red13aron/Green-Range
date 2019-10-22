@@ -7,10 +7,22 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var MealPlanSchema = new Schema({
   // `name` must be unique and of type String
-  ingredients: {
+  title: {
     type: String
   },
-  directions: {
+  description: {
+    type: String
+  },
+  ingredients: {
+    type: Array
+  },
+  method: {
+    type: String
+  },
+  imgUrl:{
+    type: String
+  },
+  imgAlt: {
     type: String
   },
   date: {
