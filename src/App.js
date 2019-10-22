@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import IngredientsPage from "./components/IngredientsListPage";
 import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 function App() {
   const [userId, setUserId] = useState("");
   const updateUserId = function(userId) {
@@ -46,6 +47,7 @@ function App() {
         path="/ingredients"
         render={() => <IngredientsPage {...[]} userId={userId} />}
       />
+      <Footer />
     </Router>
   );
 }

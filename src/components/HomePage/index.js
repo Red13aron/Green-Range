@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+
 import RecipeCard from "./Card";
 import { Container, makeStyles } from "@material-ui/core";
 import API from "../../utils/API";
@@ -30,13 +29,11 @@ export default function HomePage() {
 
   return (
     <>
-      <NavBar />
       <Container className={classes.container}>
         {recipes.map(recipe => (
           <RecipeCard recipe={recipe} key={recipe._id} />
         ))}
       </Container>
-      <Footer />
     </>
   );
 }
