@@ -16,6 +16,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    req.body.date = new Date(req.body.date);
     db.MealPlan
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -31,6 +32,12 @@ module.exports = {
     db.MealPlan
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByWeek: function(req, res) {
+    db.MealPlan
+      .find({date: {$gte: req.body.startDate, $lte: req.body.endDate}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
