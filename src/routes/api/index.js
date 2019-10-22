@@ -8,7 +8,7 @@ const userMealPlanHistoryRoutes = require("./userMealPlanHistory");
 router.use("/users", userRoutes);
 router.use("/dietOptionTypes", dietOptionTypesRoutes);
 router.use("/ingredient", ingredientRoutes);
-router.use("/mealPlan", mealPlanRoutes);
+router.use("/mealPlans", mealPlanRoutes);
 router.use("/userMealPlanHistory", userMealPlanHistoryRoutes);
 
 module.exports = router;

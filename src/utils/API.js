@@ -12,5 +12,8 @@ export default {
     saveUser: function (UserData) {
         console.log("hi test", UserData);
         return axios.post("/api/users", UserData);
+    },
+    getRecipes: function(startDate, endDate) {
+        return axios.post("/api/mealPlans/week", {startDate, endDate})
     }
 };

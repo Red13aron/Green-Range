@@ -1,14 +1,10 @@
 import React from "react";
-import NavBar from './NavBar';
-import SignUpForm from './SignUpForm';
-
+import SignUpForm from "./SignUpForm";
 
 export default function SignUpPage() {
-    return (
-        <>
-            <NavBar />
-            <SignUpForm />
-        </>
-    )
-};
-
+  return (
+    <>
+      <SignUpForm />
+    </>
+  );
+}
