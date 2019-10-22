@@ -7,8 +7,7 @@ import API from "../../utils/API";
 const useStyles = makeStyles(theme => ({
   container: {
     direction: "row",
-    justify: "center",
-    alignItems: "center"
+    justify: "center"
   }
 }));
 
