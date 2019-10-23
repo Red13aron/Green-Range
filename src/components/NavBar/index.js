@@ -77,11 +77,11 @@ export default function NavBar() {
               How it works
             </Link>
           </Typography> */}
-          {location.pathname !== "/plans" && (
+          {location.pathname !== "/mealOptions" && (
             <Link
               // onClick={setPlans(true)}
               className={classes.subtitle}
-              to="/plans"
+              to="/mealOptions"
             >
               Meal Plans
             </Link>

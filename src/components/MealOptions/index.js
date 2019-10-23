@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
-import RecipeCard from "../HomePage/Card";
+import MealCard from "./Card";
 import { Container, makeStyles } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import "./style.css"
+import Link from "react-router-dom/Link"
+import "./style.css";
 
 const useStyles = makeStyles(theme => ({
     container: {
+        display: "flex",
         direction: "row",
-        justify: "center",
+        justifyContent: "spaceBetween",
         alignItems: "center"
+    },
+    linkContainer: {
+        justifyContent: "center"
     },
     header: {
         fontSize: 40,
         color: "rgb(159,65,152)",
         textAlign: "center",
-        marginTop: "50px",
-    },
-    linkContainer: {
-        justifyContent: "center"
+        marginTop: "100px",
+        marginBottom: "120px"
     },
     linkButton: {
         background: "rgb(159,65,152)",
@@ -29,68 +31,84 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center",
         textDecoration: "none",
         borderRadius: "10px",
-        marginTop: "120px",
-        marginBottom: "20px",
+        marginTop: "80px",
+        marginBottom: "120px",
         fontSize: "30px",
         padding: "10px",
         boxShadow: "1px 2px 2px 1px #ccc"
     }
 }));
 
-export default function HomePage() {
-    const [recipes, setRecipes] = useState([]);
+export default function HomePage(props) {
+    const [mealPlans, setMealPlans] = useState([]);
+    // const [userSelection, setUserSelection] = useState({});
 
-    function getRecipes() {
-        API.getRecipes(new Date("10/21/2019"), new Date("10/25/2019")).then(
+    function postUserSelection(mealPlan) {
+        console.log("here are the props", props);
+        const userSelection = { userId: props.userId, planId: mealPlan._id, date: mealPlan.date }
+        API.postUserSelection(userSelection)
+            .then(function (res) {
+                console.log('TEST', res);
+                res.sendStatus(200);
+            }).catch(function (err) {
+                console.log(err);
+            })
+    }
+
+    function getMealPlan() {
+        API.getMealPlan({}).then(
             function (res) {
-                setRecipes(res.data);
+                const mealPlans = res.data;
+                API.getMeals().then(
+                    function (res) {
+                        for (let i = 0; i < mealPlans.length; i++) {
+                            const mealPlan = mealPlans[i];
+                            mealPlan.mealObj = []
+                            for (let g = 0; g < mealPlan.meals.length; g++) {
+                                for (let j = 0; j < res.data.length; j++) {
+                                    const meal = res.data[j];
+                                    if (mealPlan.meals[g] === meal._id) {
+                                        mealPlan.mealObj.push(meal);
+                                    }
+                                }
+                            }
+                        }
+                        setMealPlans(mealPlans);
+                    })
             }
         );
     }
 
-    useEffect(() => getRecipes());
+    useEffect(() => { getMealPlan() },
+        []);
 
     const classes = useStyles();
 
     return (
         <>
             <Typography className={classes.header}>Time to choose your meals for next week</Typography>
-            <Container className={classes.linkContainer}>
-                <Link
-                    to="/home"
-                    className={classes.linkButton}>
-                    Option 1</Link>
-            </Container>
-            <Container className={classes.container}>
-                {recipes.map(recipe => (
-                    <RecipeCard recipe={recipe} key={recipe._id} />
-                ))}
-            </Container>
+            {mealPlans.map((mealPlan, index) => {
+                return (
+                    <>
+                        <Container className={classes.container}>
 
-            <Container className={classes.linkContainer}>
-                <Link
-                    to="/home"
-                    className={classes.linkButton}>
-                    Option 2</Link>
-            </Container>
-            <Container className={classes.container}>
-                {recipes.map(recipe => (
-                    <RecipeCard recipe={recipe} key={recipe._id} />
-                ))}
-            </Container>
-
-            <Container className={classes.linkContainer}>
-                <Link
-                    to="/home"
-                    className={classes.linkButton}>
-                    Option 3</Link>
-            </Container>
-            <Container className={classes.container}>
-                {recipes.map(recipe => (
-                    <RecipeCard recipe={recipe} key={recipe._id} />
-                ))}
-            </Container>
-
+                            <div className={classes.container} key={mealPlan._id}>
+                                {mealPlan.mealObj.map((meal, index) => {
+                                    return <MealCard meal={meal} key={index} />
+                                })}
+                            </div>
+                        </Container>
+                        <Container className={classes.linkContainer}>
+                            <Link className={classes.linkButton}
+                                onClick={() => postUserSelection(mealPlan)}
+                            to="/home"
+                            >Option # {index + 1}
+                            </Link>
+                        </Container>
+                    </>
+                )
+            }
+            )}
         </>
     );
 }
