@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
   },
   subtitle: {
     fontSize: "15px",
-
     fontStyle: "normal",
     fontFamily: "Didact Gothic"
   },
@@ -34,7 +33,8 @@ const useStyles = makeStyles(theme => ({
     padding: "10px",
     fontWeight: "bold",
     fontFamily: "Didact Gothic",
-    textAlign: "center"
+    textAlign: "center",
+    color: "darkorchid"
   }
 }));
 

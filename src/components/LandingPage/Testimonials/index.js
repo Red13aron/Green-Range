@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
     padding: "10px",
     fontWeight: "bold",
     fontFamily: "Didact Gothic",
-    textAlign: "center"
+    textAlign: "center",
+    color: "darkorchid"
   }
 }));
 
