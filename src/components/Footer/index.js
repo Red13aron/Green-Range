@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "rgb(206,219,48)",
     alignContent: "center",
     display: "flex",
-
     left: "0",
     bottom: "0",
     height: "90px",
