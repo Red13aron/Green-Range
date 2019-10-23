@@ -9,9 +9,6 @@ var IngredientSchema = new Schema({
   // `name` must be unique and of type String
   ingredientName: {
     type: String
-  },
-  calories: {
-    type: Number
   }
 });
 
