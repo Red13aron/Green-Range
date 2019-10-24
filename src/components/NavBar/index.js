@@ -76,13 +76,6 @@ export default function NavBar(props) {
           >
             Meal Plans
           </Link>
-          <Link
-            className={classes.subtitle}
-            disabled={getDisabled("aboutus")}
-            to="/aboutus"
-          >
-            About us
-          </Link>
           <ButtonSignUp userId={props.userId} href="/login"></ButtonSignUp>
         </Toolbar>
       </AppBar>

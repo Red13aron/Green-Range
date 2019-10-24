@@ -15,13 +15,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     height: "100px",
     textAlign: "center",
-    marginTop: "80px",
+    marginTop: "20px",
     backgroundColor: "rgb(206,219,48)",
     alignContent: "center",
     display: "flex",
     left: "0",
     bottom: "0",
-    height: "90px",
     width: "100%"
   },
   card: {
@@ -55,29 +54,14 @@ function Footer() {
           </Link>
         </Typography>
         <br />
+
         <Typography variant="h6" className={classes.card}>
-          <Link className={classes.card} to="/aboutus">
-            About us
+          <Link className={classes.card} to="/plans">
+            Meal Plans
           </Link>
         </Typography>
         <br />
-        <Typography variant="h6" className={classes.card}>
-          <Link className={classes.card} to="/contact">
-            Contact
-          </Link>
-        </Typography>
-        <br />
-        <Typography variant="h6" className={classes.card}>
-          <Link className={classes.card} to="/faq">
-            FAQ
-          </Link>
-        </Typography>
-        <br />
-        <Typography variant="h6" className={classes.card}>
-          <Link className={classes.card} to="/partners">
-            Be a partner
-          </Link>
-        </Typography>
+
         <br />
       </div>
       <div className={classes.card}>
