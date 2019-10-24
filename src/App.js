@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      <NavBar userId={userId} />
       <Route
         exact
         path="/login"
